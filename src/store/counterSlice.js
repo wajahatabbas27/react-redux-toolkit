@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const counterUpdate = createAsyncThunk(
     "counter/counterUpdate",
     async (value, thunkAPI) => {
-        const response = await fetch("http://localhost:3000/api/updatecounter");
+        const response = await fetch("http://192.168.10.16:3000/api/updatecounter");
         const data = await response.json();
         return data;                            //this data will be received in action.payload in extraReducer.
     }

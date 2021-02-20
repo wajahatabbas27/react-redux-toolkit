@@ -9,9 +9,9 @@ export function makeServer({ environment = "test" } = {}) {
             this.get("updatecounter", () => {
                 return 34;
             }, {
-                timing: 1000
+                //timing: 1000
             })
         }
     });
-    server();
+    
 };

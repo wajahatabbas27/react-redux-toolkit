@@ -8,7 +8,7 @@ export const Counter = () => {
     const dispatch = useDispatch();
     const { counter, isLoading } = useSelector((state) => {
         return {
-            count: state.counter.count,
+            counter: state.counter.count,
             isLoading: state.counter.isLoading
         }
     });
