@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment, incrementByAmount } from '../store/counterSlice';
+import { counterUpdate, decrement, increment, incrementByAmount } from '../store/counterSlice';
 
 export const Counter = () => {
 
     const [value, setValue] = useState(0);
     const dispatch = useDispatch();
-    const counter = useSelector((state) => {
-        return state.counter.count
-    })
+    const { counter, isLoading } = useSelector((state) => {
+        return {
+            count: state.counter.count,
+            isLoading: state.counter.isLoading
+        }
+    });
+
+    if (isLoading) {
+        return <div>Loading .....</div>
+    }
+
+
 
     return (
         <div>
@@ -35,6 +44,12 @@ export const Counter = () => {
             <button onClick={() => {
                 dispatch(incrementByAmount(Number(value)));
             }}>Increment By Amount</button>
+
+            <br />
+
+            <button onClick={() => {
+                dispatch(counterUpdate());
+            }}>Increment By Server</button>
 
 
         </div >
